@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -7,13 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAHI – MISSION MRM OS (Premium Edition)</title>
     
-    <!-- Favicon & App Icons (Relative paths for GitHub Pages subpath compatibility) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
-    <link rel="manifest" href="manifest.webmanifest">
-    <meta name="theme-color" content="#000000">
-
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@500;700&family=Inter:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
@@ -100,6 +94,7 @@
         body.light-mode #history-date-picker { background: #ffffff !important; color: var(--text-main) !important; border-color: var(--border-normal) !important; }
         body.light-mode .chapter-title { color: var(--text-main) !important; }
         body.light-mode .save-score-btn { background: #e2e8f0 !important; color: var(--text-main) !important; border-color: var(--border-normal) !important; }
+
 
         /* =========================================================
            ২. গ্লোবাল স্টাইল (Global Styles)
@@ -220,36 +215,8 @@
            ========================================================= */
         header { text-align: center; padding: 20px; background: var(--card-bg); border: 1px solid var(--border-normal); border-radius: 12px; margin-bottom: 25px; position: relative; transition: all 0.4s ease; box-shadow: 0 0 10px rgba(34, 211, 238, 0.1); }
         header:hover { border-color: var(--cyan-glow); box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); }
-        
-        /* Updated brand logo styling for official logo image */
-        .brand-logo { 
-            position: absolute; 
-            top: 20px; 
-            left: 20px; 
-            width: 48px; 
-            height: 48px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.6); 
-            border: 2px solid rgba(34, 211, 238, 0.5); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-            overflow: hidden;
-            background: #000;
-        }
-        .brand-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .brand-logo:hover { 
-            transform: scale(1.1) rotate(6deg); 
-            box-shadow: 0 0 22px var(--cyan-glow);
-            border-color: var(--cyan-glow);
-        }
-
+        .brand-logo { position: absolute; top: 20px; left: 20px; width: 45px; height: 45px; background: linear-gradient(135deg, #1d4ed8, #22d3ee); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 0.9rem; color: #ffffff; box-shadow: 0 0 15px rgba(34, 211, 238, 0.6); border: 2px solid rgba(255, 255, 255, 0.3); transition: transform 0.3s ease; }
+        .brand-logo:hover { transform: scale(1.1) rotate(10deg); }
         .header-badges { position: absolute; top: 15px; right: 65px; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
         
         .streak-badge { display: inline-block; background: rgba(0, 0, 0, 0.4); border: 1.5px solid var(--timer-orange); color: var(--timer-orange); padding: 6px 14px; border-radius: 8px; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; cursor: pointer; box-shadow: 0 0 5px rgba(245, 158, 11, 0.2); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
@@ -446,7 +413,7 @@
         .btn-del-link { color: var(--alert-red) !important; } .btn-del-link:hover { color: #fff !important; text-shadow: 0 0 5px var(--alert-red); transform: scale(1.1); background: transparent !important;}
 
         /* =========================================================
-           ৯. সাউন্ড এবং স্টপওয়াচ এক্সট্রা স্টাইল
+           ৯. সাউন্ড এবং স্টপওয়াচ এক্সট্রা স্টাইল
            ========================================================= */
         .sw-row { 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
@@ -650,10 +617,7 @@
 <div class="container">
     
     <header>
-        <!-- Official Brand Logo Image -->
-        <div class="brand-logo" title="MAHI – MISSION BUET">
-            <img src="logo.png" alt="MAHI MISSION BUET Logo">
-        </div>
+        <div class="brand-logo">MRM</div>
         <div class="header-badges">
             <div class="streak-badge" id="streak-counter">🔥 Streak: 1 Day</div>
             <div class="xp-profile-card">
@@ -2570,13 +2534,14 @@
         const yearSelect = document.getElementById('heatmap-year-select');
         if(yearSelect) {
             yearSelect.innerHTML = '';
+            // বর্তমান বছরকে অন্তর্ভুক্ত করে ২০২৫ থেকে ২০৫০ সাল রেঞ্জ নিশ্চিত করা হয়েছে
             let startYear = Math.min(2025, currentYear);
             let endYear = Math.max(2050, currentYear);
             for(let y = startYear; y <= endYear; y++) {
                 let opt = document.createElement('option');
                 opt.value = y;
                 opt.innerText = y;
-                if(y === currentYear) opt.selected = true;
+                if(y === currentYear) opt.selected = true; // বর্তমান বছরকে স্বয়ংক্রিয় সিলেক্ট করা হচ্ছে
                 yearSelect.appendChild(opt);
             }
         }
@@ -2724,4 +2689,3 @@
 </script>
 </body>
 </html>
-
